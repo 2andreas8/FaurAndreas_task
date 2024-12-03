@@ -50,21 +50,5 @@ public class DatabaseInitializer implements CommandLineRunner {
         ownerRepository.save(owner);
 
         System.out.println("Datele au fost salvate în baza de date."); */
-
-        Owner andreas = new Owner();
-        andreas.setName("Andreas Faur");
-        andreas.setPassword("password");
-
-        Task task3 = new Task();
-        task3.setTitle("Task 3");
-        task3.setDescription("Description for Task 3");
-        task3.setRemainingEffort(4);
-        task3.setOwner(andreas);
-
-        andreas.getTasks().add(task3);
-
-        ownerRepository.save(andreas);
-
-        System.out.println("Datele au fost salvate");
     }
 }

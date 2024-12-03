@@ -16,6 +16,14 @@ public class TaskService {
         this.taskRepository = taskRepository;
     }
 
+    public Task updateEffort(Long taskId, int newEffort) {
+        Task task = taskRepository.findById(taskId)
+                .orElseThrow(()-> new IllegalArgumentException("Task not found."));
+
+        task.setRemainingEffort(newEffort);
+        return taskRepository.save(task);
+    }
+
     public List<Task> getAllTasks() {
         return taskRepository.findAll();
     }
