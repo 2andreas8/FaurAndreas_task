@@ -4,6 +4,7 @@ import com.example.task1.domain.Owner;
 import com.example.task1.domain.Task;
 import com.example.task1.repository.OwnerRepository;
 import com.example.task1.repository.TaskRepository;
+import com.example.task1.service.TaskService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -13,14 +14,18 @@ public class DatabaseInitializer implements CommandLineRunner {
     private final OwnerRepository ownerRepository;
     private final TaskRepository taskRepository;
 
-    public DatabaseInitializer(OwnerRepository ownerRepository, TaskRepository taskRepository) {
+    private final TaskService taskService;
+
+
+    public DatabaseInitializer(OwnerRepository ownerRepository, TaskRepository taskRepository, TaskService taskService) {
         this.ownerRepository = ownerRepository;
         this.taskRepository = taskRepository;
+        this.taskService = taskService;
     }
 
     @Override
     public void run(String... args) throws Exception {
-        // Creează un proprietar
+        /*// Creează un proprietar
         Owner owner = new Owner();
         owner.setName("Vlad Ene");
 
@@ -44,6 +49,22 @@ public class DatabaseInitializer implements CommandLineRunner {
         // Salvează proprietarul (cascading va salva și task-urile)
         ownerRepository.save(owner);
 
-        System.out.println("Datele au fost salvate în baza de date.");
+        System.out.println("Datele au fost salvate în baza de date."); */
+
+        Owner andreas = new Owner();
+        andreas.setName("Andreas Faur");
+        andreas.setPassword("password");
+
+        Task task3 = new Task();
+        task3.setTitle("Task 3");
+        task3.setDescription("Description for Task 3");
+        task3.setRemainingEffort(4);
+        task3.setOwner(andreas);
+
+        andreas.getTasks().add(task3);
+
+        ownerRepository.save(andreas);
+
+        System.out.println("Datele au fost salvate");
     }
 }
