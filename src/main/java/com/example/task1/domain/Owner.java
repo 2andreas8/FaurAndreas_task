@@ -14,6 +14,8 @@ public class Owner {
 
     private String name;
 
+    private String email;
+
     private String password;
 
     @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -21,9 +23,10 @@ public class Owner {
 
     public Owner() {}
 
-    public Owner(Long id, String name, String password, List<Task> tasks) {
+    public Owner(Long id, String name, String email, String password, List<Task> tasks) {
         this.id = id;
         this.name = name;
+        this.email = email;
         this.password = password;
         this.tasks = tasks;
     }
@@ -42,6 +45,14 @@ public class Owner {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {
