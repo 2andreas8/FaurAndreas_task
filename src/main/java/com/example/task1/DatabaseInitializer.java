@@ -51,7 +51,7 @@ public class DatabaseInitializer implements CommandLineRunner {
 
         System.out.println("Datele au fost salvate în baza de date."); */
 
-        Owner owner = ownerRepository.findByName("Andreas Faur");
+        /*Owner owner = ownerRepository.findByName("Andreas Faur");
 
         owner.setEmail("andreasfaur@gmail.com");
         ownerRepository.save(owner);
@@ -59,6 +59,6 @@ public class DatabaseInitializer implements CommandLineRunner {
         owner = ownerRepository.findByName("Vlad Ene");
 
         owner.setEmail("vladene@gmail.com");
-        ownerRepository.save(owner);
+        ownerRepository.save(owner);*/
     }
 }
