@@ -3,6 +3,9 @@ package com.example.task1.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 public class Task {
     @Id
@@ -13,12 +16,15 @@ public class Task {
     private String description;
 
     @Column(name = "remaining_effort")
-    private int remainingEffor;
+    private int remainingEffort;
 
     @ManyToOne
     @JoinColumn(name = "owner_id", nullable = false) //coloana legatura
     @JsonIgnore
     private Owner owner;
+
+    @OneToMany
+    private List<Comment> comments = new ArrayList<>();
 
     public Task() {}
 
@@ -54,11 +60,11 @@ public class Task {
     }
 
     public int getRemainingEffort() {
-        return remainingEffor;
+        return remainingEffort;
     }
 
-    public void setRemainingEffort(int remainingEffor) {
-        this.remainingEffor = remainingEffor;
+    public void setRemainingEffort(int remainingEffort) {
+        this.remainingEffort = remainingEffort;
     }
 
     public Owner getOwner() {
@@ -68,4 +74,14 @@ public class Task {
     public void setOwner(Owner owner) {
         this.owner = owner;
     }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
+
+
 }
